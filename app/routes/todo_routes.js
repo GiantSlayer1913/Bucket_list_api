@@ -45,7 +45,7 @@ router.get('/todos', requireToken, (req, res) => {
 })
 
 // SHOW
-// GET /todos/5a7db6c74d55bc51bdf39793
+// GET /todos/id
 router.get('/todos/:id', requireToken, (req, res) => {
   // req.params.id will be set based on the `:id` in the route
   Todo.findById(req.params.id)
@@ -74,7 +74,7 @@ router.post('/todos', requireToken, (req, res) => {
 })
 
 // UPDATE
-// PATCH /todos/5a7db6c74d55bc51bdf39793
+// PATCH /todos/id
 router.patch('/todos/:id', requireToken, (req, res) => {
   // if the client attempts to change the `owner` property by including a new
   // owner, prevent that by deleting that key/value pair
@@ -106,7 +106,7 @@ router.patch('/todos/:id', requireToken, (req, res) => {
 })
 
 // DESTROY
-// DELETE /todos/5a7db6c74d55bc51bdf39793
+// DELETE /todos/id
 router.delete('/todos/:id', requireToken, (req, res) => {
   Todo.findById(req.params.id)
     .then(handle404)
